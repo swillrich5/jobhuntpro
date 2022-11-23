@@ -1,0 +1,18 @@
+{% extends "base.html"  %}
+
+{% block title %}Job Hunt Pro{% endblock title %}
+
+{% block content %}
+    <h1 class="my-3 text-center">Job Hunt Pro</h1>
+    {% for job in jobs %}
+        <div class="container text-light">
+            <div class="container-fluid p-3 my-3 bg-secondary rounded">
+                <h5>
+                    <a class="text-decoration-none text-light" href="{% url 'jobhunt:job_detail' job.id %}"><strong>{{ job.job_title }}</strong></a>
+                    <small>({{ job.application_date }})</small>
+                </h5>
+                <p>{{ job.job_description|truncatewords:30|linebreaks }}</p>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

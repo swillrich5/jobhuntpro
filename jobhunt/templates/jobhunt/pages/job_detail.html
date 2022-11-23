@@ -1,0 +1,20 @@
+{% extends "base.html"  %}
+
+{% block title %}Job Hunt Pro{% endblock title %}
+
+{% block content %}
+    <h1 class="my-3 text-center">Job Hunt Pro</h1>
+    <div class="container text-light">
+        <div class="container-fluid p-3 my-3 bg-secondary rounded">
+            <h5>Job Title: {{ job.job_title }}</h5>
+            <h6>Employer: {{ job.employer }}
+            <p>Application Submitted: {{ job.application_date }}
+            <p><strong>Job Description:</strong></p>
+            <p>{{ job.job_description|linebreaks }}</p>
+            {% if job.notes %}
+                <p><strong>Notes</strong></p>
+                <p>{{ job.notes|linebreaks }}</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
