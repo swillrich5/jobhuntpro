@@ -15,6 +15,12 @@
                 <p><strong>Notes</strong></p>
                 <p>{{ job.notes|linebreaks }}</p>
             {% endif %}
+            <a href="{% url 'jobhunt:add_activity' job.id %}" class="btn btn-primary">
+                Add Activity
+            </a>
+            <a href="{% url 'jobhunt:add_contact' job.id %}" class="btn btn-primary">
+                Add Contact
+            </a>
         </div>
     </div>
 {% endblock %}
