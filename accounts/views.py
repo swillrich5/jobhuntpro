@@ -18,7 +18,7 @@ def signupaccount(request):
                     password = request.POST['password1'])
                 user.save()
                 login(request, user)
-                return redirect('jobhunt:job_detail')
+                return redirect('jobhunt:job_list')
             except IntegrityError:
                 return render(request, 'accounts/signupaccount.html', {
                     'form': UserCreateForm,
