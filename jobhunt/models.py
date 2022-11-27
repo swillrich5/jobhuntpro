@@ -3,10 +3,21 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Job(models.Model):
+    class status_types(models.TextChoices):
+        ACTIVE = 'AC', ('Active')
+        NOTSELECTED = 'NS', ('Not Selected')
+        WITHDRAWN = 'WD', ('Withdrawn')
+
     employer = models.CharField(max_length=100)
     job_title = models.CharField(max_length=100, blank=True)
     job_description = models.TextField(blank=True)
     notes = models.TextField(blank=True)
+    status = models.TextField(
+        max_length=2,
+        choices=status_types.choices,
+        default=status_types.ACTIVE
+    )
+    job_application_url = models.TextField(blank=True)
     application_date = models.DateField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
