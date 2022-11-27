@@ -11,7 +11,7 @@ class Job(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'self.job_title + ": " + self.employer'
+        return f'{self.job_title}: {self.employer}'
 
 
 class Contact(models.Model):
@@ -21,9 +21,17 @@ class Contact(models.Model):
     phone = models.CharField(max_length=11)
     job = models.ForeignKey(Job, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f'{self.name}, {self.title}: {self.employer}'
+
+
+
 class Activity(models.Model):
     activity = models.CharField(max_length=50)
     date = models.DateTimeField()
     note = models.TextField()
     job = models.ForeignKey(Job, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.activity} - {self.date}'
 

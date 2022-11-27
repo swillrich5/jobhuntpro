@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Job, Contact, Activity
-from .forms import AddContactForm, AddActivityForm
+from .forms import AddContactForm, AddActivityForm, AddJobForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 @login_required
@@ -73,3 +74,22 @@ def add_activity(request, job_id):
                 'form': AddActivityForm(),
                 'error': 'Bad data submitted'
             })
+
+@login_required
+def add_job(request):
+    if request.method == 'GET':
+        return render(request, 'jobhunt/pages/add_job.html', {
+                        'form': AddJobForm(),
+                    })
+    else:
+        try:
+            form = AddJobForm(request.POST)
+            newJob = form.save(commit=False)
+            newJob.user = request.user
+            newJob.save()
+            return redirect('jobhunt:job_detail', newJob.id)
+        except ValueError:
+            return render(request, 'jobhunt/pages/add_job.html', {
+                            'form': AddJobForm(),
+                            'error': 'bad data passed in'
+                        })

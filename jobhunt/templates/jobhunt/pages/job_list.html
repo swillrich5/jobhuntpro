@@ -4,15 +4,24 @@
 
 {% block content %}
     <h1 class="my-3 text-center">Job Hunt Pro</h1>
-    {% for job in jobs %}
-        <div class="container text-light">
-            <div class="container-fluid p-3 my-3 bg-secondary rounded">
-                <h5>
-                    <a class="text-decoration-none text-light" href="{% url 'jobhunt:job_detail' job.id %}"><strong>{{ job.job_title }}</strong></a>
-                    <small>({{ job.application_date }})</small>
-                </h5>
-                <p>{{ job.job_description|truncatewords:30|linebreaks }}</p>
+        <div class="container">
+        {% if not jobs  %}
+            <div class='text-center'>
+                <h5>You currently have no jobs listed.</h5>
             </div>
+        {% else %}
+            {% for job in jobs %}
+                    <div class="container-fluid p-2 my-3 bg-secondary rounded shadow-lg text-light">
+                        <h5>
+                            <a class="text-decoration-none text-light" href="{% url 'jobhunt:job_detail' job.id %}"><strong>{{ job.job_title }}</strong></a>
+                            <small>({{ job.application_date }})</small>
+                        </h5>
+                        <p>{{ job.job_description|truncatewords:30|linebreaks }}</p>
+                    </div>
+            {% endfor %}
+        {% endif %}
+        <div class="text-center pt-3">
+            <a href="{% url 'jobhunt:add_job' %}" class="btn btn-primary">Add Job</a>
         </div>
-    {% endfor %}
+    </div>
 {% endblock %}
