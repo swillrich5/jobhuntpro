@@ -3,22 +3,29 @@
 {% block title %}Job Hunt Pro{% endblock title %}
 
 {% block content %}
-    <h1 class="my-3 text-center">Job Hunt Pro</h1>
+    <h1 class="mb-5 text-center">Job Hunt Pro</h1>
         <div class="container">
         {% if not jobs  %}
             <div class='text-center'>
                 <h5>You currently have no jobs listed.</h5>
             </div>
         {% else %}
-            {% for job in jobs %}
-                    <div class="container-fluid p-2 my-3 bg-secondary rounded shadow-lg text-light">
-                        <h5>
-                            <a class="text-decoration-none text-light" href="{% url 'jobhunt:job_detail' job.id %}"><strong>{{ job.job_title }}</strong></a>
-                            <small>({{ job.application_date }})</small>
-                        </h5>
-                        <p>{{ job.job_description|truncatewords:30|linebreaks }}</p>
+            <div class="row g-0">
+                {% for job in jobs %}
+                    <div class="col-4">
+                        <div class="card mb-3 bg-secondary rounded shadow-lg text-light">
+                            <div class="card-body text-center">
+                                <h3>{{ job.job_title }}</h3>
+                                <h4>{{ job.employer }}</h4>
+                                <h5>Applied: {{ job.application_date }}</h5>
+                                <p class='card-text'>
+                                    {{ job.job_description|truncatewords:30|linebreaks }}
+                                </p>
+                            </div>
+                        </div>
                     </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         {% endif %}
         <div class="text-center pt-3">
             <a href="{% url 'jobhunt:add_job' %}" class="btn btn-primary">Add Job</a>
