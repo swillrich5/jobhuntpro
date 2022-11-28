@@ -18,7 +18,7 @@ class AddActivityForm(forms.Form):
 class AddJobForm(ModelForm):
     class Meta:
         model = Job
-        fields = ['employer', 'job_title', 'job_description', 'notes']
+        fields = ['employer', 'job_title', 'job_description', 'notes', 'status']
         labels = { 'employer': ('Employer'),
                    'job_title': ('Job Title'),
                    'job_description': ('Job Description'),
@@ -38,5 +38,5 @@ class AddJobForm(ModelForm):
             }),
             'notes': Textarea(attrs={
                 'rows': 3
-            })
+            }),
         }
