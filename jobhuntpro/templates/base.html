@@ -19,6 +19,7 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ms-auto">
                 {% if user.is_authenticated %}
+                    <p class='nav-link'>Welcome, {{ user.username }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
                     <a class="nav-link" href="{% url 'accounts:logoutaccount' %}">Logout</a>
                 {% else %}
                     <a class="nav-link" href="{% url 'accounts:loginaccount' %}">Login</a>
