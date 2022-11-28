@@ -12,7 +12,7 @@ class Job(models.Model):
     job_title = models.CharField(max_length=100, blank=True)
     job_description = models.TextField(blank=True)
     notes = models.TextField(blank=True)
-    status = models.TextField(
+    status = models.CharField(
         max_length=2,
         choices=status_types.choices,
         default=status_types.ACTIVE
@@ -24,6 +24,8 @@ class Job(models.Model):
     def __str__(self):
         return f'{self.job_title}: {self.employer}'
 
+    def get_status(self):
+        return Job.status_types(self.status).label
 
 class Contact(models.Model):
     name = models.CharField(max_length=100)
