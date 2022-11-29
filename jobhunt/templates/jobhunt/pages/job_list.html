@@ -14,7 +14,7 @@
                 {% for job in jobs %}
                     <div class="col-3 mx-2">
                         <a href="{% url "jobhunt:job_detail" job.id %}" class="text-decoration-none">
-                            <div class="card mb-3 bg-secondary rounded shadow-lg text-light">
+                            <div class="card mb-3 rounded shadow-lg text-light">
                                 <div class="card-body text-center">
                                     <h3>{{ job.job_title }}</h3>
                                     <h4>{{ job.employer }}</h4>
@@ -33,7 +33,7 @@
             </div>
         {% endif %}
         <div class="text-center pt-3">
-            <a href="{% url 'jobhunt:add_job' %}" class="btn btn-primary">Add Job</a>
+            <a href="{% url 'jobhunt:add_job' %}" class="btn">Add Job</a>
         </div>
     </div>
 {% endblock %}

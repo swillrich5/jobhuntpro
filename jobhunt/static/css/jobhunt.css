@@ -1,5 +1,30 @@
+body {
+   background-color: #1D3557;
+   color: #F1FAEE;
+}
+
+.card {
+   background-color: #457B9D;
+}
+
 .card:hover {
    transform: scale(1.05);
    transition: transform .75s;
+}
+
+.container-fluid {
+   background-color: #457B9D;
+}
+
+.btn {
+   background-color: #F1FAEE;
+}
+
+.btn:hover {
+   background-color: #C5EBB9;
+}
+
+.bg-honeydew {
+   background-color: #F1FAEE;
 }
 

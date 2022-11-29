@@ -5,7 +5,7 @@
 {% block content %}
     <h1 class="my-3 text-center">Job Hunt Pro</h1>
     <div class="container text-light">
-        <div class="container-fluid p-3 my-3 bg-secondary rounded">
+        <div class="container-fluid p-3 my-3 rounded">
             <h5>Job Title: {{ job.job_title }}</h5>
             <h6>Employer: {{ job.employer }}
             <p>Application Submitted: {{ job.application_date }}
@@ -18,12 +18,20 @@
             <p class='card-text'>
                 Job Status: {{ job.get_status }}
             </p>
-            <a href="{% url 'jobhunt:add_activity' job.id %}" class="btn btn-primary">
-                Add Activity
-            </a>
-            <a href="{% url 'jobhunt:add_contact' job.id %}" class="btn btn-primary">
-                Add Contact
-            </a>
+            <div class=text-center>
+                <a href="#" class="btn">
+                    Update Job
+                </a>
+                <a href="#" class="btn">
+                    Delete Job
+                </a>
+                <a href="{% url 'jobhunt:add_activity' job.id %}" class="btn">
+                    Add Activity
+                </a>
+                <a href="{% url 'jobhunt:add_contact' job.id %}" class="btn">
+                    Add Contact
+                </a>
+            </div>
         </div>
     </div>
 {% endblock %}
