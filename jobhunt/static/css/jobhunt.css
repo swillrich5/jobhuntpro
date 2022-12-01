@@ -7,7 +7,7 @@ body {
    background-color: #457B9D;
 }
 
-.card:hover {
+.card-expand:hover {
    transform: scale(1.05);
    transition: transform .75s;
 }

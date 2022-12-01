@@ -14,7 +14,7 @@
                 {% for job in jobs %}
                     <div class="col-3 mx-2">
                         <a href="{% url "jobhunt:job_detail" job.id %}" class="text-decoration-none">
-                            <div class="card mb-3 rounded shadow-lg text-light">
+                            <div class="card card-expand mb-3 rounded shadow-lg text-light">
                                 <div class="card-body text-center">
                                     <h3>{{ job.job_title }}</h3>
                                     <h4>{{ job.employer }}</h4>

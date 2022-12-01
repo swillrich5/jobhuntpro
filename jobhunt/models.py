@@ -35,7 +35,7 @@ class Contact(models.Model):
     job = models.ForeignKey(Job, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.name}, {self.title}: {self.employer}'
+        return f'{self.name}, {self.title}'
 
 
 
