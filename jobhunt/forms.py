@@ -33,11 +33,6 @@ class AddContactForm(ModelForm):
         }
         
 
-    # contact_name = forms.CharField(label="Contact Name:", max_length=100)
-    # contact_title = forms.CharField(label="Title:", max_length=50)
-    # contact_email = forms.EmailField(label="Email Address:")
-    # contact_phone = forms.CharField(label="Phone No.:", max_length=15)
-
 
 class AddJobForm(ModelForm):
     class Meta:
@@ -67,7 +62,25 @@ class AddJobForm(ModelForm):
 
 
 
-class AddActivityForm(forms.Form):
-    activity = forms.CharField(label="Activity:", max_length=100)
-    activity_date = forms.DateTimeField(label="Date/Time:")
-    activity_note = forms.CharField(label="Notes:", max_length=200)
+class AddActivityForm(ModelForm):
+    class Meta:
+        model = Activity
+        fields = ['activity', 'date', 'note']
+        labels = {
+            'activity': ('Activity:'),
+            'date': ('Date:'),
+            'note': ('Note:'),
+        }
+        widgets = {
+            'activity': TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': '1st Interview',
+            }),
+            'date': TextInput(attrs={
+                'class': 'form-control',
+            }),
+            'note': TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Review company background',
+            }),
+        }
