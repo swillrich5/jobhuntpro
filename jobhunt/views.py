@@ -57,6 +57,7 @@ def add_contact(request, job_id):
             })
 
 
+
 def add_activity(request, job_id):
     job = get_object_or_404(Job, pk=job_id)
     if request.method == 'GET':
@@ -82,6 +83,8 @@ def add_activity(request, job_id):
                 'form': AddActivityForm(),
                 'error': 'Bad data submitted'
             })
+
+
 
 @login_required
 def add_job(request):
