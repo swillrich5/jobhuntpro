@@ -1,8 +1,8 @@
 # Job Hunt Pro
 
-Job Hunt Pro is an application that allows users to enter, update, and track their job applications while searching for a new job.
+Job Hunt Pro is an application that allows users to enter, update, and track their job applications while searching for a new job. It's still under construction, but major portions of it are functional.
 
-## Deployed Appliction
+## Deployed Application
 Coming Soon!
 
 ## GitHub
